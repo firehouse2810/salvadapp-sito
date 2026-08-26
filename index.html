@@ -206,10 +206,20 @@
   .store-badge-row {
     margin-top: 20px;
     padding: 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
   }
   .store-badge-row img {
     display: block;
     filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
+  }
+  .qr-code {
+    width: 84px;
+    height: 84px;
+    border-radius: 8px;
+    border: 1px solid var(--crease);
   }
   .badge {
     font-family: 'IBM Plex Mono', monospace;
@@ -460,9 +470,6 @@
           <span data-i18n="es">Sin publicidad</span>
         </span>
       </div>
-      <!-- BADGE GOOGLE PLAY: attivare (togliere il commento) solo quando
-           l'app risulta effettivamente live sullo store, come da linee
-           guida Google (badge usato solo per contenuti già disponibili).
       <div class="store-badge-row">
         <a data-i18n="it" class="active" href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener">
           <img src="https://play.google.com/intl/it/badges/static/images/badges/it_badge_web_generic.png" alt="Disponibile su Google Play" height="56">
@@ -473,8 +480,10 @@
         <a data-i18n="es" href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener">
           <img src="https://play.google.com/intl/es/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play" height="56">
         </a>
+        <a href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener" class="qr-link">
+          <img src="assets/qr-playstore.png" alt="QR code per SalvadApp! su Google Play" class="qr-code">
+        </a>
       </div>
-      -->
 
     </div>
     <div class="hero-art">
@@ -751,4 +760,3 @@
 
 </body>
 </html>
- 
