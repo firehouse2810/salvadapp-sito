@@ -11,13 +11,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #F3EEE2;
-    --paper-raised: #FBF8F1;
-    --ink: #16232E;
-    --petrol: #2C5468;
-    --brass: #B98B4E;
-    --crease: #D8CFBC;
-    --ink-soft: #4A5A66;
+    /* Palette Blu metallizzata di SalvadApp!, stessi valori esatti di
+       AppAccent.BLU (light/mid/dark) e Silver/SilverDim in Color.kt */
+    --blu-light: #4A7BA6;
+    --blu-mid: #1D3E5C;
+    --blu-dark: #11263B;
+    --silver: #CFD1D8;
+    --silver-dim: #8C8E97;
+
+    --paper: var(--blu-mid);
+    --paper-raised: var(--blu-light);
+    --ink: var(--silver);
+    --petrol: #BFE0F5;
+    --brass: #BFE0F5;
+    --crease: rgba(207,209,216,0.3);
+    --ink-soft: #C9D6DF;
     --radius: 3px;
     --max-w: 760px;
   }
@@ -36,15 +44,15 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Sottile texture "fibra di carta" */
+  /* Sottile texture, versione scura */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     background-image:
-      radial-gradient(circle at 20% 30%, rgba(22,35,46,0.015) 0, transparent 40%),
-      radial-gradient(circle at 80% 70%, rgba(44,84,104,0.02) 0, transparent 45%);
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.025) 0, transparent 45%);
     z-index: 0;
   }
 
@@ -65,7 +73,7 @@
     font-weight: 500;
   }
 
-  /* ---------- Piega di carta: divisore firma ---------- */
+  /* ---------- Divisore firma ---------- */
   .fold-divider {
     position: relative;
     height: 46px;
@@ -88,7 +96,7 @@
     right: 24px;
     top: calc(50% + 1px);
     height: 6px;
-    background: linear-gradient(180deg, rgba(22,35,46,0.05), transparent);
+    background: linear-gradient(180deg, rgba(0,0,0,0.15), transparent);
     filter: blur(1px);
   }
 
@@ -104,12 +112,12 @@
   .brandmark {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-family: 'Fraunces', serif;
     font-weight: 600;
-    font-size: 19px;
+    font-size: 26px;
   }
-  .brandmark img { width: 30px; height: 30px; }
+  .brandmark img { width: 44px; height: 44px; }
 
   .lang-switch {
     display: flex;
@@ -179,14 +187,14 @@
     position: absolute;
     width: 240px;
     height: 240px;
-    background: radial-gradient(circle, rgba(185,139,78,0.16), transparent 70%);
+    background: radial-gradient(circle, rgba(74,123,166,0.30), transparent 70%);
     border-radius: 50%;
   }
   .hero-art img {
     width: 200px;
     height: 200px;
     position: relative;
-    filter: drop-shadow(0 18px 26px rgba(22,35,46,0.16));
+    filter: drop-shadow(0 18px 26px rgba(0,0,0,0.35));
   }
 
   .badge-row {
@@ -194,6 +202,14 @@
     gap: 10px;
     margin-top: 26px;
     flex-wrap: wrap;
+  }
+  .store-badge-row {
+    margin-top: 20px;
+    padding: 14px 0;
+  }
+  .store-badge-row img {
+    display: block;
+    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
   }
   .badge {
     font-family: 'IBM Plex Mono', monospace;
@@ -257,6 +273,33 @@
     font-size: 15.5px;
   }
 
+  /* ---------- Blocchi di funzione (testo semplice) ---------- */
+  .feature-block p {
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    max-width: 62ch;
+    margin: 0;
+  }
+  .feature-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 11px;
+  }
+  .feature-list li {
+    padding-left: 20px;
+    position: relative;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+  }
+  .feature-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--brass);
+  }
+
   /* ---------- Documenti: card con angolo piegato ---------- */
   .doc-grid {
     display: grid;
@@ -277,7 +320,7 @@
   }
   .doc-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 22px rgba(22,35,46,0.10);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.35);
   }
   /* Angolo piegato — dog-ear, eco diretta dell'origami del logo */
   .doc-card::after {
@@ -290,7 +333,7 @@
     border-style: solid;
     border-width: 0 22px 22px 0;
     border-color: transparent var(--paper) transparent transparent;
-    filter: drop-shadow(-2px 2px 2px rgba(22,35,46,0.10));
+    filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.25));
     transition: border-width 0.18s ease;
   }
   .doc-card:hover::after {
@@ -343,7 +386,7 @@
   .foot-mono {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
-    color: #8A8071;
+    color: var(--silver-dim);
   }
 
   [data-i18n] { display: none; }
@@ -411,7 +454,28 @@
           <span data-i18n="en">Free</span>
           <span data-i18n="es">Gratuita</span>
         </span>
+        <span class="badge">
+          <span data-i18n="it" class="active">Senza pubblicità</span>
+          <span data-i18n="en">No ads</span>
+          <span data-i18n="es">Sin publicidad</span>
+        </span>
       </div>
+      <!-- BADGE GOOGLE PLAY: attivare (togliere il commento) solo quando
+           l'app risulta effettivamente live sullo store, come da linee
+           guida Google (badge usato solo per contenuti già disponibili).
+      <div class="store-badge-row">
+        <a data-i18n="it" class="active" href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener">
+          <img src="https://play.google.com/intl/it/badges/static/images/badges/it_badge_web_generic.png" alt="Disponibile su Google Play" height="56">
+        </a>
+        <a data-i18n="en" href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener">
+          <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="56">
+        </a>
+        <a data-i18n="es" href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener">
+          <img src="https://play.google.com/intl/es/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play" height="56">
+        </a>
+      </div>
+      -->
+
     </div>
     <div class="hero-art">
       <img src="assets/logo.png" alt="Logo SalvadApp!, un salvadanaio origami">
@@ -481,6 +545,123 @@
 <div class="fold-divider"></div>
 
 <div class="wrap">
+  <section class="feature-block">
+    <h2>
+      <span data-i18n="it" class="active">Guarda crescere i tuoi risparmi</span>
+      <span data-i18n="en">Watch your savings grow</span>
+      <span data-i18n="es">Mira crecer tus ahorros</span>
+    </h2>
+    <p>
+      <span data-i18n="it" class="active">Ogni versamento è un pezzo di puzzle che si scopre: un'immagine nascosta che prende forma man mano che ti avvicini al traguardo. Scegli tra cinque stili di avanzamento — anello, barra, semicerchio, liquido animato, segmenti — e quattro modi di leggere l'andamento: a linea, a istogramma, a calendario o a torta, con un indicatore a colpo d'occhio se sei in linea con i tempi.</span>
+      <span data-i18n="en">Every deposit reveals a piece of the puzzle: a hidden image that takes shape as you get closer to your goal. Choose from five progress styles — ring, bar, half-circle, animated liquid, segments — and four ways to read your trend: line, histogram, calendar or pie chart, with an at-a-glance indicator showing whether you're on track.</span>
+      <span data-i18n="es">Cada aportación revela una pieza del puzzle: una imagen oculta que va tomando forma a medida que te acercas a la meta. Elige entre cinco estilos de progreso — anillo, barra, semicírculo, líquido animado, segmentos — y cuatro formas de leer tu evolución: línea, histograma, calendario o tarta, con un indicador a simple vista de si vas al ritmo previsto.</span>
+    </p>
+  </section>
+</div>
+
+<div class="fold-divider"></div>
+
+<div class="wrap">
+  <section class="feature-block">
+    <h2>
+      <span data-i18n="it" class="active">Non dimenticare un versamento</span>
+      <span data-i18n="en">Never miss a deposit</span>
+      <span data-i18n="es">No olvides una aportación</span>
+    </h2>
+    <p>
+      <span data-i18n="it" class="active">Attiva il promemoria per i tuoi versamenti periodici: una notifica ti avvisa alla scadenza. Se un giorno rispondi con calma — o te ne dimentichi — tutto resta in sospeso negli Arretrati, pronto per essere confermato quando vuoi, senza perdere nulla.</span>
+      <span data-i18n="en">Turn on reminders for your recurring deposits: a notification alerts you at each due date. If you respond later — or forget — nothing is lost: it stays pending in Overdue, ready to confirm whenever you like.</span>
+      <span data-i18n="es">Activa el recordatorio para tus aportaciones periódicas: una notificación te avisa en cada vencimiento. Si respondes con calma — o se te olvida — nada se pierde: queda pendiente en Atrasados, listo para confirmar cuando quieras.</span>
+    </p>
+  </section>
+</div>
+
+<div class="fold-divider"></div>
+
+<div class="wrap">
+  <section class="feature-block">
+    <h2>
+      <span data-i18n="it" class="active">Un'idea per i più piccoli</span>
+      <span data-i18n="en">An idea for the little ones</span>
+      <span data-i18n="es">Una idea para los más pequeños</span>
+    </h2>
+    <p>
+      <span data-i18n="it" class="active">SalvadApp! è utile anche per insegnare ai bambini il valore del risparmio: ogni volta che mettono una moneta nel salvadanaio vero, registrano lo stesso importo nell'app. Vedere il puzzle completarsi rende tangibile il progresso — e il giorno in cui l'obiettivo è raggiunto, si rompe davvero il salvadanaio.</span>
+      <span data-i18n="en">SalvadApp! is also great for teaching kids the value of saving: every time they drop a coin in the real piggy bank, they log the same amount in the app. Watching the puzzle come together makes progress tangible — and the day the goal is reached, the piggy bank really does get broken.</span>
+      <span data-i18n="es">SalvadApp! también es útil para enseñar a los niños el valor del ahorro: cada vez que meten una moneda en la hucha real, registran el mismo importe en la app. Ver el puzzle completarse hace tangible el progreso — y el día en que se alcanza el objetivo, la hucha se rompe de verdad.</span>
+    </p>
+  </section>
+</div>
+
+<div class="fold-divider"></div>
+
+<div class="wrap">
+  <section class="feature-block">
+    <h2>
+      <span data-i18n="it" class="active">Cosa trovi dentro</span>
+      <span data-i18n="en">What's inside</span>
+      <span data-i18n="es">Qué encontrarás</span>
+    </h2>
+    <ul class="feature-list">
+      <li>
+        <span data-i18n="it" class="active">Storico completo di ogni obiettivo, con cronologia dei cicli passati e note personali</span>
+        <span data-i18n="en">Full history for every goal, with past cycles and personal notes</span>
+        <span data-i18n="es">Historial completo de cada objetivo, con ciclos pasados y notas personales</span>
+      </li>
+      <li>
+        <span data-i18n="it" class="active">Foto opzionali per riconoscere a colpo d'occhio le tue schede</span>
+        <span data-i18n="en">Optional photos to recognize your goals at a glance</span>
+        <span data-i18n="es">Fotos opcionales para reconocer tus fichas de un vistazo</span>
+      </li>
+      <li>
+        <span data-i18n="it" class="active">Occhio privacy: nascondi le cifre con un tocco, utile sui mezzi pubblici</span>
+        <span data-i18n="en">Privacy eye: hide the numbers with a tap, handy on public transport</span>
+        <span data-i18n="es">Ojo de privacidad: oculta las cifras con un toque, útil en el transporte público</span>
+      </li>
+      <li>
+        <span data-i18n="it" class="active">Cassaforte IBAN protetta da impronta digitale o riconoscimento del volto</span>
+        <span data-i18n="en">IBAN vault protected by fingerprint or face recognition</span>
+        <span data-i18n="es">Caja fuerte IBAN protegida por huella digital o reconocimiento facial</span>
+      </li>
+      <li>
+        <span data-i18n="it" class="active">Backup automatico locale, con possibilità di ripristino in un tap</span>
+        <span data-i18n="en">Automatic local backup, restore in one tap</span>
+        <span data-i18n="es">Copia de seguridad local automática, con restauración en un toque</span>
+      </li>
+      <li>
+        <span data-i18n="it" class="active">Cinque colori d'accento e due stili di card, a tua scelta</span>
+        <span data-i18n="en">Five accent colors and two card styles, your choice</span>
+        <span data-i18n="es">Cinco colores de acento y dos estilos de tarjeta, a tu elección</span>
+      </li>
+      <li>
+        <span data-i18n="it" class="active">Disponibile in italiano, inglese e spagnolo</span>
+        <span data-i18n="en">Available in Italian, English and Spanish</span>
+        <span data-i18n="es">Disponible en italiano, inglés y español</span>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<div class="fold-divider"></div>
+
+<div class="wrap">
+  <section class="feature-block">
+    <h2>
+      <span data-i18n="it" class="active">La tua privacy viene prima</span>
+      <span data-i18n="en">Your privacy comes first</span>
+      <span data-i18n="es">Tu privacidad es lo primero</span>
+    </h2>
+    <p>
+      <span data-i18n="it" class="active">SalvadApp! funziona interamente offline. Nessun account da creare, nessun dato inviato a server esterni, nessuna pubblicità, nessun tracciamento del tuo comportamento. Anche le notifiche e i promemoria vengono pianificati interamente sul tuo telefono, senza alcuna trasmissione dei tuoi dati. Le uniche segnalazioni tecniche anonime, in caso di crash dell'app, sono disattivate di default: le attivi tu, solo se vuoi aiutarci a migliorare.</span>
+      <span data-i18n="en">SalvadApp! works entirely offline. No account to create, no data sent to external servers, no ads, no tracking of your behavior. Even notifications and reminders are scheduled entirely on your phone, with no transmission of your data. The only anonymous technical crash reports are off by default: you turn them on only if you want to help us improve.</span>
+      <span data-i18n="es">SalvadApp! funciona completamente sin conexión. Sin cuenta que crear, sin datos enviados a servidores externos, sin publicidad, sin seguimiento de tu comportamiento. Incluso las notificaciones y recordatorios se programan enteramente en tu teléfono, sin transmisión alguna de tus datos. Los únicos informes técnicos anónimos, en caso de fallo, están desactivados por defecto: los activas tú, solo si quieres ayudarnos a mejorar.</span>
+    </p>
+  </section>
+</div>
+
+<div class="fold-divider"></div>
+
+<div class="wrap">
   <section>
     <h2>
       <span data-i18n="it" class="active">Documenti</span>
@@ -528,9 +709,9 @@
   <footer>
     <div class="foot-row">
       <p>
-        <span data-i18n="it" class="active">Un progetto indipendente, sviluppato da una sola persona. Scrivi a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
-        <span data-i18n="en">An independent project, built by one person. Write to <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
-        <span data-i18n="es">Un proyecto independiente, creado por una sola persona. Escribe a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
+        <span data-i18n="it" class="active">Sviluppato da AVLAM. Scrivi a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
+        <span data-i18n="en">Developed by AVLAM. Write to <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
+        <span data-i18n="es">Desarrollado por AVLAM. Escribe a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
       </p>
       <p class="foot-mono">© 2026 SalvadApp!</p>
     </div>
