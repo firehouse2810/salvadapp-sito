@@ -3,30 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutOK — Le scadenze della tua auto, sotto controllo</title>
-<meta name="description" content="AutOK è un'app per tenere sotto controllo tagliando, gomme, revisione, bollo e assicurazione dei tuoi veicoli. Nessun dato lascia il tuo telefono, salvo tua scelta.">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<title>SalvadApp! — Il salvadanaio, piegato a modo tuo</title>
+<meta name="description" content="SalvadApp! è un'app per organizzare i tuoi obiettivi di risparmio, come un salvadanaio digitale. Nessun dato lascia il tuo telefono.">
+<link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Palette AutOK: nero/argento con accento blu polvere, stessi valori di colors.xml
-       (black_1/2/3, silver, silver_dim, autok_blue) */
-    --black-1: #131316;
-    --black-2: #232327;
-    --black-3: #3A3A40;
-    --silver: #CFD1D8;
-    --silver-dim: #8C8E97;
-    --autok-blue: #7FA6BF;
-
-    --paper: var(--black-1);
-    --paper-raised: var(--black-2);
-    --ink: var(--silver);
-    --petrol: var(--autok-blue);
-    --brass: var(--autok-blue);
-    --crease: rgba(207,209,216,0.25);
-    --ink-soft: #B4B7C0;
+    --paper: #F3EEE2;
+    --paper-raised: #FBF8F1;
+    --ink: #16232E;
+    --petrol: #2C5468;
+    --brass: #B98B4E;
+    --crease: #D8CFBC;
+    --ink-soft: #4A5A66;
     --radius: 3px;
     --max-w: 760px;
   }
@@ -45,15 +36,15 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Sottile texture, versione scura */
+  /* Sottile texture "fibra di carta" */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     background-image:
-      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 0, transparent 40%),
-      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.025) 0, transparent 45%);
+      radial-gradient(circle at 20% 30%, rgba(22,35,46,0.015) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(44,84,104,0.02) 0, transparent 45%);
     z-index: 0;
   }
 
@@ -74,7 +65,7 @@
     font-weight: 500;
   }
 
-  /* ---------- Divisore firma ---------- */
+  /* ---------- Piega di carta: divisore firma ---------- */
   .fold-divider {
     position: relative;
     height: 46px;
@@ -97,7 +88,7 @@
     right: 24px;
     top: calc(50% + 1px);
     height: 6px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.15), transparent);
+    background: linear-gradient(180deg, rgba(22,35,46,0.05), transparent);
     filter: blur(1px);
   }
 
@@ -113,12 +104,12 @@
   .brandmark {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     font-family: 'Fraunces', serif;
     font-weight: 600;
-    font-size: 26px;
+    font-size: 19px;
   }
-  .brandmark img { width: 44px; height: 44px; }
+  .brandmark img { width: 30px; height: 30px; }
 
   .lang-switch {
     display: flex;
@@ -188,14 +179,14 @@
     position: absolute;
     width: 240px;
     height: 240px;
-    background: radial-gradient(circle, rgba(127,166,191,0.22), transparent 70%);
+    background: radial-gradient(circle, rgba(185,139,78,0.16), transparent 70%);
     border-radius: 50%;
   }
   .hero-art img {
     width: 200px;
     height: 200px;
     position: relative;
-    filter: drop-shadow(0 18px 26px rgba(0,0,0,0.35));
+    filter: drop-shadow(0 18px 26px rgba(22,35,46,0.16));
   }
 
   .badge-row {
@@ -203,24 +194,6 @@
     gap: 10px;
     margin-top: 26px;
     flex-wrap: wrap;
-  }
-  .store-badge-row {
-    margin-top: 20px;
-    padding: 14px 0;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
-  }
-  .store-badge-row img {
-    display: block;
-    filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
-  }
-  .qr-code {
-    width: 84px;
-    height: 84px;
-    border-radius: 8px;
-    border: 1px solid var(--crease);
   }
   .badge {
     font-family: 'IBM Plex Mono', monospace;
@@ -284,33 +257,6 @@
     font-size: 15.5px;
   }
 
-  /* ---------- Blocchi di funzione (testo semplice) ---------- */
-  .feature-block p {
-    color: var(--ink-soft);
-    font-size: 15.5px;
-    max-width: 62ch;
-    margin: 0;
-  }
-  .feature-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 11px;
-  }
-  .feature-list li {
-    padding-left: 20px;
-    position: relative;
-    color: var(--ink-soft);
-    font-size: 15.5px;
-  }
-  .feature-list li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--brass);
-  }
-
   /* ---------- Documenti: card con angolo piegato ---------- */
   .doc-grid {
     display: grid;
@@ -331,7 +277,7 @@
   }
   .doc-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+    box-shadow: 0 10px 22px rgba(22,35,46,0.10);
   }
   /* Angolo piegato — dog-ear, eco diretta dell'origami del logo */
   .doc-card::after {
@@ -344,7 +290,7 @@
     border-style: solid;
     border-width: 0 22px 22px 0;
     border-color: transparent var(--paper) transparent transparent;
-    filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.25));
+    filter: drop-shadow(-2px 2px 2px rgba(22,35,46,0.10));
     transition: border-width 0.18s ease;
   }
   .doc-card:hover::after {
@@ -397,7 +343,7 @@
   .foot-mono {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
-    color: var(--silver-dim);
+    color: #8A8071;
   }
 
   [data-i18n] { display: none; }
@@ -417,77 +363,58 @@
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
   }
-
-  .soon {
-    display: inline-block;
-    margin-top: 22px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    color: var(--petrol);
-    border: 1px dashed var(--petrol);
-    padding: 9px 14px;
-    border-radius: 3px;
-  }
-  .brandmark .wordmark { letter-spacing: 0.01em; }
-  .icona-app { width: 44px; height: 44px; border-radius: 22%; }
-  .icona-hero { border-radius: 22%; }
 </style>
 </head>
 <body>
+
 <div class="wrap">
   <header>
     <div class="nav-row">
       <div class="brandmark">
-        <img src="assets/favicon.png" alt="" class="icona-app">
-        <span class="wordmark">AutOK</span>
+        <img src="assets/logo.png" alt="">
+        <span>SalvadApp!</span>
       </div>
-      <div class="lang-switch" role="group" aria-label="Lingua / Language">
+      <div class="lang-switch" role="group" aria-label="Lingua / Language / Idioma">
         <button data-set-lang="it" aria-pressed="true">IT</button>
         <button data-set-lang="en" aria-pressed="false">EN</button>
+        <button data-set-lang="es" aria-pressed="false">ES</button>
       </div>
     </div>
   </header>
 
   <div class="hero">
     <div>
-      <p class="eyebrow">
-        <span data-i18n="it" class="active">Un progetto personale</span>
-        <span data-i18n="en">A personal project</span>
-      </p>
+      <p class="eyebrow active" data-i18n="it">Un progetto personale</p>
       <h1>
-        <span data-i18n="it" class="active">Le scadenze della tua auto,<br><em>sotto controllo.</em></span>
-        <span data-i18n="en">Your car's deadlines,<br><em>under control.</em></span>
+        <span data-i18n="it" class="active">Il salvadanaio,<br>piegato <em>a modo tuo.</em></span>
+        <span data-i18n="en">Your piggy bank,<br>folded <em>your way.</em></span>
+        <span data-i18n="es">Tu hucha,<br>plegada <em>a tu manera.</em></span>
       </h1>
       <p class="lede">
-        <span data-i18n="it" class="active">AutOK ti aiuta a non dimenticare più tagliando, gomme, revisione, bollo e assicurazione: tutto ciò che riguarda la manutenzione dei tuoi veicoli, in un'unica app.</span>
-        <span data-i18n="en">AutOK helps you stay on top of service, tyres, inspection, road tax and insurance: everything about maintaining your vehicles, in one app.</span>
+        <span data-i18n="it" class="active">SalvadApp! ti aiuta a organizzare i tuoi obiettivi di risparmio, uno per uno — come i segni su un salvadanaio, ma sul telefono.</span>
+        <span data-i18n="en">SalvadApp! helps you organize your savings goals, one at a time — like the marks on a piggy bank, but on your phone.</span>
+        <span data-i18n="es">SalvadApp! te ayuda a organizar tus objetivos de ahorro, uno a uno — como las marcas de una hucha, pero en el móvil.</span>
       </p>
       <p class="lede" style="margin-top: 10px; font-size: 15.5px; color: var(--ink-soft);">
-        <span data-i18n="it" class="active">Niente account, niente collegamenti a servizi esterni: inserisci tu i dati, restano sul tuo telefono.</span>
-        <span data-i18n="en">No account, no links to outside services: you enter the data, and it stays on your phone.</span>
+        <span data-i18n="it" class="active">Non è collegata a banche o conti correnti: registri tu stesso, manualmente, quanto metti da parte — come su un salvadanaio vero.</span>
+        <span data-i18n="en">Not connected to any bank or account: you log what you set aside yourself, by hand — just like a real piggy bank.</span>
+        <span data-i18n="es">No está conectada a bancos ni cuentas: registras tú mismo, a mano, lo que apartas — como en una hucha de verdad.</span>
       </p>
       <div class="badge-row">
         <span class="badge">
-          <span data-i18n="it" class="active">Nessun dato lascia il telefono, salvo tua scelta</span>
-        <span data-i18n="en">No data leaves your phone, unless you choose to</span>
+          <span data-i18n="it" class="active">Nessun dato lascia il telefono</span>
+          <span data-i18n="en">No data leaves your phone</span>
+          <span data-i18n="es">Ningún dato sale del móvil</span>
         </span>
         <span class="badge">
-          <span data-i18n="it" class="active">Un veicolo gratis</span>
-        <span data-i18n="en">One vehicle free</span>
-        </span>
-        <span class="badge">
-          <span data-i18n="it" class="active">Senza account</span>
-        <span data-i18n="en">No account needed</span>
+          <span data-i18n="it" class="active">Gratuita</span>
+          <span data-i18n="en">Free</span>
+          <span data-i18n="es">Gratuita</span>
         </span>
       </div>
-      <span class="soon">
-        <span data-i18n="it" class="active">In arrivo su Google Play</span>
-        <span data-i18n="en">Coming soon to Google Play</span>
-      </span>
     </div>
     <div class="hero-art">
-      <img src="assets/icon.png" alt="Icona di AutOK" class="icona-hero">
+      <img src="assets/logo.png" alt="Logo SalvadApp!, un salvadanaio origami">
     </div>
   </div>
 </div>
@@ -498,19 +425,22 @@
   <section>
     <h2>
       <span data-i18n="it" class="active">Come funziona</span>
-        <span data-i18n="en">How it works</span>
+      <span data-i18n="en">How it works</span>
+      <span data-i18n="es">Cómo funciona</span>
     </h2>
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
         <div>
           <h3>
-            <span data-i18n="it" class="active">Aggiungi la tua auto</span>
-        <span data-i18n="en">Add your car</span>
+            <span data-i18n="it" class="active">Crea un obiettivo</span>
+            <span data-i18n="en">Create a goal</span>
+            <span data-i18n="es">Crea un objetivo</span>
           </h3>
           <p>
-            <span data-i18n="it" class="active">Nome, targa, data di immatricolazione, alimentazione e chilometri: bastano pochi dati per iniziare. Il primo veicolo è gratuito.</span>
-        <span data-i18n="en">Name, plate, registration date, fuel type and mileage: a few details are enough to start. Your first vehicle is free.</span>
+            <span data-i18n="it" class="active">Dai un nome, un importo e — se vuoi — una scadenza. Fino a tre obiettivi, gratis.</span>
+            <span data-i18n="en">Give it a name, an amount and — if you like — a deadline. Up to three goals, free.</span>
+            <span data-i18n="es">Ponle un nombre, un importe y — si quieres — una fecha límite. Hasta tres objetivos, gratis.</span>
           </p>
         </div>
       </div>
@@ -518,12 +448,14 @@
         <div class="step-num">02</div>
         <div>
           <h3>
-            <span data-i18n="it" class="active">Imposta scadenze e promemoria</span>
-        <span data-i18n="en">Set deadlines and reminders</span>
+            <span data-i18n="it" class="active">Versa quando vuoi</span>
+            <span data-i18n="en">Add money whenever</span>
+            <span data-i18n="es">Aporta cuando quieras</span>
           </h3>
           <p>
-            <span data-i18n="it" class="active">Tagliando, gomme, revisione, bollo, assicurazione e tutto ciò che vuoi ricordare: scegli tu cosa tenere d'occhio e ogni quanto.</span>
-        <span data-i18n="en">Service, tyres, inspection, road tax, insurance and anything else you want to remember: you choose what to track and how often.</span>
+            <span data-i18n="it" class="active">Registra ogni versamento, anche piccolo. L'app tiene il conto e mostra quanto manca.</span>
+            <span data-i18n="en">Log every deposit, even small ones. The app keeps track and shows what's left.</span>
+            <span data-i18n="es">Registra cada aportación, incluso pequeña. La app lleva la cuenta y muestra lo que falta.</span>
           </p>
         </div>
       </div>
@@ -531,12 +463,14 @@
         <div class="step-num">03</div>
         <div>
           <h3>
-            <span data-i18n="it" class="active">Ricevi gli avvisi, senza pensieri</span>
-        <span data-i18n="en">Get reminded, stress-free</span>
+            <span data-i18n="it" class="active">Rompi il salvadanaio</span>
+            <span data-i18n="en">Break the piggy bank</span>
+            <span data-i18n="es">Rompe la hucha</span>
           </h3>
           <p>
-            <span data-i18n="it" class="active">Una notifica ti avvisa prima di ogni scadenza. Registra i chilometri quando vuoi e l'app tiene il conto di quanto manca.</span>
-        <span data-i18n="en">A notification warns you ahead of every deadline. Log your mileage whenever you like and the app keeps track of what's left.</span>
+            <span data-i18n="it" class="active">Obiettivo raggiunto? Archivialo e concediti quello per cui hai risparmiato.</span>
+            <span data-i18n="en">Goal reached? Archive it and treat yourself to what you saved for.</span>
+            <span data-i18n="es">¿Objetivo alcanzado? Archívalo y date el capricho por el que ahorraste.</span>
           </p>
         </div>
       </div>
@@ -547,127 +481,11 @@
 <div class="fold-divider"></div>
 
 <div class="wrap">
-  <section class="feature-block">
-    <h2>
-      <span data-i18n="it" class="active">Il tagliando, su misura</span>
-        <span data-i18n="en">Service, your way</span>
-    </h2>
-    <p>
-      <span data-i18n="it" class="active">Scegli se seguire un intervallo fisso a chilometri e mesi, lasciare che sia il tagliando dinamico a stimare la prossima scadenza dai tuoi chilometri reali, o comporre un tagliando personalizzato voce per voce. Ogni visita finisce nello storico.</span>
-        <span data-i18n="en">Follow a fixed interval in miles or months, let dynamic service estimate your next due date from your real mileage, or build a custom service item by item. Every visit goes into the history.</span>
-    </p>
-  </section>
-</div>
-
-<div class="fold-divider"></div>
-
-<div class="wrap">
-  <section class="feature-block">
-    <h2>
-      <span data-i18n="it" class="active">Gomme sotto controllo</span>
-        <span data-i18n="en">Tyres under control</span>
-    </h2>
-    <p>
-      <span data-i18n="it" class="active">Misura montata, pressioni consigliate, data di sostituzione e inversioni pianificate: l'app segue l'usura dalla data di montaggio e ti avvisa quando è il momento di invertirle o cambiarle.</span>
-        <span data-i18n="en">Fitted size, recommended pressures, replacement date and planned rotations: the app follows wear from the fitting date and tells you when it's time to rotate or replace them.</span>
-    </p>
-  </section>
-</div>
-
-<div class="fold-divider"></div>
-
-<div class="wrap">
-  <section class="feature-block">
-    <h2>
-      <span data-i18n="it" class="active">Bollo, revisione, assicurazione</span>
-        <span data-i18n="en">Road tax, inspection, insurance</span>
-    </h2>
-    <p>
-      <span data-i18n="it" class="active">Le scadenze fiscali e obbligatorie dei tuoi veicoli, per l'Italia (bollo, revisione) e per il Regno Unito (VED, MOT), con lo storico dei pagamenti. Le bombole GPL e metano hanno la loro scheda.</span>
-        <span data-i18n="en">The tax and legal deadlines of your vehicles, for Italy (road tax, inspection) and the United Kingdom (VED, MOT), with a payment history. LPG and methane cylinders have their own page.</span>
-    </p>
-  </section>
-</div>
-
-<div class="fold-divider"></div>
-
-<div class="wrap">
-  <section class="feature-block">
-    <h2>
-      <span data-i18n="it" class="active">Cosa trovi dentro</span>
-        <span data-i18n="en">What's inside</span>
-    </h2>
-    <ul class="feature-list">
-      <li>
-        <span data-i18n="it" class="active">Più veicoli nella stessa app, con foto e colore a tua scelta per riconoscerli a colpo d'occhio</span>
-        <span data-i18n="en">Multiple vehicles in one app, with a photo and colour of your choice to tell them apart at a glance</span>
-      </li>
-      <li>
-        <span data-i18n="it" class="active">Storico del tagliando e delle sostituzioni, con voci personalizzabili</span>
-        <span data-i18n="en">Service and replacement history, with customisable items</span>
-      </li>
-      <li>
-        <span data-i18n="it" class="active">Promemoria liberi, anche ricorrenti, per tutto quello che non ha una scheda dedicata</span>
-        <span data-i18n="en">Free-form reminders, including recurring ones, for everything without a dedicated page</span>
-      </li>
-      <li>
-        <span data-i18n="it" class="active">Documenti del veicolo in un'area protetta da impronta, volto o PIN del telefono</span>
-        <span data-i18n="en">Vehicle documents in an area protected by your phone's fingerprint, face or PIN</span>
-      </li>
-      <li>
-        <span data-i18n="it" class="active">Backup automatico locale, con ripristino in un tap</span>
-        <span data-i18n="en">Automatic local backup, restore in one tap</span>
-      </li>
-      <li>
-        <span data-i18n="it" class="active">Tema chiaro e scuro, colori d'accento a scelta</span>
-        <span data-i18n="en">Light and dark theme, accent colours of your choice</span>
-      </li>
-      <li>
-        <span data-i18n="it" class="active">Disponibile in italiano e in inglese</span>
-        <span data-i18n="en">Available in Italian and English</span>
-      </li>
-    </ul>
-  </section>
-</div>
-
-<div class="fold-divider"></div>
-
-<div class="wrap">
-  <section class="feature-block">
-    <h2>
-      <span data-i18n="it" class="active">La tua privacy viene prima</span>
-        <span data-i18n="en">Your privacy comes first</span>
-    </h2>
-    <p>
-      <span data-i18n="it" class="active">AutOK funziona interamente offline. Nessun account da creare, nessun dato inviato a server dello sviluppatore, nessun tracciamento. Se scegli di copiare un backup su un servizio cloud, sei tu a deciderlo.</span>
-        <span data-i18n="en">AutOK works entirely offline. No account to create, no data sent to the developer's servers, no tracking. If you choose to copy a backup to a cloud service, that's your decision.</span>
-    </p>
-  </section>
-</div>
-
-
-<div class="fold-divider"></div>
-
-<div class="wrap">
-  <section class="feature-block">
-    <h2>
-      <span data-i18n="it" class="active">Un veicolo gratis, poi sblocchi</span>
-      <span data-i18n="en">One vehicle free, then unlock</span>
-    </h2>
-    <p>
-      <span data-i18n="it" class="active">Puoi gestire un veicolo gratuitamente. Per aggiungerne altri puoi sbloccare la funzione con un acquisto una tantum, valido per tutti i veicoli successivi. I veicoli che hai già non vengono mai toccati.</span>
-      <span data-i18n="en">You can manage one vehicle for free. To add more you can unlock the feature with a one-time purchase, valid for every vehicle you add afterwards. The vehicles you already have are never touched.</span>
-    </p>
-  </section>
-</div>
-
-<div class="fold-divider"></div>
-
-<div class="wrap">
   <section>
     <h2>
       <span data-i18n="it" class="active">Documenti</span>
-        <span data-i18n="en">Documents</span>
+      <span data-i18n="en">Documents</span>
+      <span data-i18n="es">Documentos</span>
     </h2>
     <div class="doc-grid">
       <a class="doc-card active" data-i18n="it" href="assets/privacy_it.pdf" target="_blank" rel="noopener">
@@ -680,6 +498,11 @@
         <h3>Privacy Policy</h3>
         <span class="dl">↓ Download PDF</span>
       </a>
+      <a class="doc-card" data-i18n="es" href="assets/privacy_es.pdf" target="_blank" rel="noopener">
+        <p class="doc-kicker">PDF</p>
+        <h3>Política de Privacidad</h3>
+        <span class="dl">↓ Descargar PDF</span>
+      </a>
       <a class="doc-card active" data-i18n="it" href="assets/termini_it.pdf" target="_blank" rel="noopener">
         <p class="doc-kicker">PDF</p>
         <h3>Termini e Condizioni</h3>
@@ -689,6 +512,11 @@
         <p class="doc-kicker">PDF</p>
         <h3>Terms &amp; Conditions</h3>
         <span class="dl">↓ Download PDF</span>
+      </a>
+      <a class="doc-card" data-i18n="es" href="assets/termini_es.pdf" target="_blank" rel="noopener">
+        <p class="doc-kicker">PDF</p>
+        <h3>Términos y Condiciones</h3>
+        <span class="dl">↓ Descargar PDF</span>
       </a>
     </div>
   </section>
@@ -700,10 +528,11 @@
   <footer>
     <div class="foot-row">
       <p>
-        <span data-i18n="it" class="active">Sviluppato da AVLAM App. Scrivi a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
-        <span data-i18n="en">Developed by AVLAM App. Write to <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
+        <span data-i18n="it" class="active">Un progetto indipendente, sviluppato da una sola persona. Scrivi a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
+        <span data-i18n="en">An independent project, built by one person. Write to <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
+        <span data-i18n="es">Un proyecto independiente, creado por una sola persona. Escribe a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
       </p>
-      <p class="foot-mono">© 2026 AutOK</p>
+      <p class="foot-mono">© 2026 SalvadApp!</p>
     </div>
   </footer>
 </div>
@@ -722,7 +551,7 @@
       });
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.setAttribute('lang', lang);
-      try { localStorage.setItem('autok-lang', lang); } catch (e) {}
+      try { localStorage.setItem('salvadapp-lang', lang); } catch (e) {}
     }
 
     buttons.forEach(function (btn) {
@@ -732,11 +561,12 @@
     });
 
     var saved = null;
-    try { saved = localStorage.getItem('autok-lang'); } catch (e) {}
-    if (saved && ['it', 'en'].indexOf(saved) !== -1) {
+    try { saved = localStorage.getItem('salvadapp-lang'); } catch (e) {}
+    if (saved && ['it', 'en', 'es'].indexOf(saved) !== -1) {
       setLang(saved);
     }
   })();
 </script>
+
 </body>
 </html>
