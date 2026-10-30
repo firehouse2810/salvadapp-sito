@@ -3,29 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SalvadApp! — Il salvadanaio, piegato a modo tuo</title>
-<meta name="description" content="SalvadApp! è un'app per organizzare i tuoi obiettivi di risparmio, come un salvadanaio digitale. Nessun dato lascia il tuo telefono, salvo tua scelta.">
-<link rel="icon" type="image/png" href="assets/logo.png">
+<title>AutOK — Le scadenze della tua auto, sotto controllo</title>
+<meta name="description" content="AutOK è un'app per tenere sotto controllo tagliando, gomme, revisione, bollo e assicurazione dei tuoi veicoli. Nessun dato lascia il tuo telefono, salvo tua scelta.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Palette Blu metallizzata di SalvadApp!, stessi valori esatti di
-       AppAccent.BLU (light/mid/dark) e Silver/SilverDim in Color.kt */
-    --blu-light: #4A7BA6;
-    --blu-mid: #1D3E5C;
-    --blu-dark: #11263B;
+    /* Palette AutOK: nero/argento con accento blu polvere, stessi valori di colors.xml
+       (black_1/2/3, silver, silver_dim, autok_blue) */
+    --black-1: #131316;
+    --black-2: #232327;
+    --black-3: #3A3A40;
     --silver: #CFD1D8;
     --silver-dim: #8C8E97;
+    --autok-blue: #7FA6BF;
 
-    --paper: var(--blu-mid);
-    --paper-raised: var(--blu-light);
+    --paper: var(--black-1);
+    --paper-raised: var(--black-2);
     --ink: var(--silver);
-    --petrol: #BFE0F5;
-    --brass: #BFE0F5;
-    --crease: rgba(207,209,216,0.3);
-    --ink-soft: #C9D6DF;
+    --petrol: var(--autok-blue);
+    --brass: var(--autok-blue);
+    --crease: rgba(207,209,216,0.25);
+    --ink-soft: #B4B7C0;
     --radius: 3px;
     --max-w: 760px;
   }
@@ -187,7 +188,7 @@
     position: absolute;
     width: 240px;
     height: 240px;
-    background: radial-gradient(circle, rgba(74,123,166,0.30), transparent 70%);
+    background: radial-gradient(circle, rgba(127,166,191,0.22), transparent 70%);
     border-radius: 50%;
   }
   .hero-art img {
@@ -416,78 +417,77 @@
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
   }
+
+  .soon {
+    display: inline-block;
+    margin-top: 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--petrol);
+    border: 1px dashed var(--petrol);
+    padding: 9px 14px;
+    border-radius: 3px;
+  }
+  .brandmark .wordmark { letter-spacing: 0.01em; }
+  .icona-app { width: 44px; height: 44px; border-radius: 22%; }
+  .icona-hero { border-radius: 22%; }
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <header>
     <div class="nav-row">
       <div class="brandmark">
-        <img src="assets/logo.png" alt="">
-        <span>SalvadApp!</span>
+        <img src="assets/favicon.png" alt="" class="icona-app">
+        <span class="wordmark">AutOK</span>
       </div>
-      <div class="lang-switch" role="group" aria-label="Lingua / Language / Idioma">
+      <div class="lang-switch" role="group" aria-label="Lingua / Language">
         <button data-set-lang="it" aria-pressed="true">IT</button>
         <button data-set-lang="en" aria-pressed="false">EN</button>
-        <button data-set-lang="es" aria-pressed="false">ES</button>
       </div>
     </div>
   </header>
 
   <div class="hero">
     <div>
-      <p class="eyebrow active" data-i18n="it">Un progetto personale</p>
+      <p class="eyebrow">
+        <span data-i18n="it" class="active">Un progetto personale</span>
+        <span data-i18n="en">A personal project</span>
+      </p>
       <h1>
-        <span data-i18n="it" class="active">Il salvadanaio,<br>piegato <em>a modo tuo.</em></span>
-        <span data-i18n="en">Your piggy bank,<br>folded <em>your way.</em></span>
-        <span data-i18n="es">Tu hucha,<br>plegada <em>a tu manera.</em></span>
+        <span data-i18n="it" class="active">Le scadenze della tua auto,<br><em>sotto controllo.</em></span>
+        <span data-i18n="en">Your car's deadlines,<br><em>under control.</em></span>
       </h1>
       <p class="lede">
-        <span data-i18n="it" class="active">SalvadApp! ti aiuta a organizzare i tuoi obiettivi di risparmio, uno per uno — come i segni su un salvadanaio, ma sul telefono.</span>
-        <span data-i18n="en">SalvadApp! helps you organize your savings goals, one at a time — like the marks on a piggy bank, but on your phone.</span>
-        <span data-i18n="es">SalvadApp! te ayuda a organizar tus objetivos de ahorro, uno a uno — como las marcas de una hucha, pero en el móvil.</span>
+        <span data-i18n="it" class="active">AutOK ti aiuta a non dimenticare più tagliando, gomme, revisione, bollo e assicurazione: tutto ciò che riguarda la manutenzione dei tuoi veicoli, in un'unica app.</span>
+        <span data-i18n="en">AutOK helps you stay on top of service, tyres, inspection, road tax and insurance: everything about maintaining your vehicles, in one app.</span>
       </p>
       <p class="lede" style="margin-top: 10px; font-size: 15.5px; color: var(--ink-soft);">
-        <span data-i18n="it" class="active">Non è collegata a banche o conti correnti: registri tu stesso, manualmente, quanto metti da parte — come su un salvadanaio vero.</span>
-        <span data-i18n="en">Not connected to any bank or account: you log what you set aside yourself, by hand — just like a real piggy bank.</span>
-        <span data-i18n="es">No está conectada a bancos ni cuentas: registras tú mismo, a mano, lo que apartas — como en una hucha de verdad.</span>
+        <span data-i18n="it" class="active">Niente account, niente collegamenti a servizi esterni: inserisci tu i dati, restano sul tuo telefono.</span>
+        <span data-i18n="en">No account, no links to outside services: you enter the data, and it stays on your phone.</span>
       </p>
       <div class="badge-row">
         <span class="badge">
           <span data-i18n="it" class="active">Nessun dato lascia il telefono, salvo tua scelta</span>
-          <span data-i18n="en">No data leaves your phone, unless you choose to</span>
-          <span data-i18n="es">Ningún dato sale del móvil, salvo que tú lo decidas</span>
+        <span data-i18n="en">No data leaves your phone, unless you choose to</span>
         </span>
         <span class="badge">
-          <span data-i18n="it" class="active">Gratuita</span>
-          <span data-i18n="en">Free</span>
-          <span data-i18n="es">Gratuita</span>
+          <span data-i18n="it" class="active">Un veicolo gratis</span>
+        <span data-i18n="en">One vehicle free</span>
         </span>
         <span class="badge">
-          <span data-i18n="it" class="active">Senza pubblicità</span>
-          <span data-i18n="en">No ads</span>
-          <span data-i18n="es">Sin publicidad</span>
+          <span data-i18n="it" class="active">Senza account</span>
+        <span data-i18n="en">No account needed</span>
         </span>
       </div>
-      <div class="store-badge-row">
-        <a data-i18n="it" class="active" href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener">
-          <img src="https://play.google.com/intl/it/badges/static/images/badges/it_badge_web_generic.png" alt="Disponibile su Google Play" height="56">
-        </a>
-        <a data-i18n="en" href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener">
-          <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="56">
-        </a>
-        <a data-i18n="es" href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener">
-          <img src="https://play.google.com/intl/es/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play" height="56">
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.mazziotti.salvadapp" target="_blank" rel="noopener" class="qr-link">
-          <img src="assets/qr-playstore.png" alt="QR code per SalvadApp! su Google Play" class="qr-code">
-        </a>
-      </div>
-
+      <span class="soon">
+        <span data-i18n="it" class="active">In arrivo su Google Play</span>
+        <span data-i18n="en">Coming soon to Google Play</span>
+      </span>
     </div>
     <div class="hero-art">
-      <img src="assets/logo.png" alt="Logo SalvadApp!, un salvadanaio origami">
+      <img src="assets/icon.png" alt="Icona di AutOK" class="icona-hero">
     </div>
   </div>
 </div>
@@ -498,22 +498,19 @@
   <section>
     <h2>
       <span data-i18n="it" class="active">Come funziona</span>
-      <span data-i18n="en">How it works</span>
-      <span data-i18n="es">Cómo funciona</span>
+        <span data-i18n="en">How it works</span>
     </h2>
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
         <div>
           <h3>
-            <span data-i18n="it" class="active">Crea un obiettivo</span>
-            <span data-i18n="en">Create a goal</span>
-            <span data-i18n="es">Crea un objetivo</span>
+            <span data-i18n="it" class="active">Aggiungi la tua auto</span>
+        <span data-i18n="en">Add your car</span>
           </h3>
           <p>
-            <span data-i18n="it" class="active">Dai un nome, un importo e — se vuoi — una scadenza. Obiettivi illimitati, sempre gratis.</span>
-            <span data-i18n="en">Give it a name, an amount and — if you like — a deadline. Unlimited goals, always free.</span>
-            <span data-i18n="es">Ponle un nombre, un importe y — si quieres — una fecha límite. Objetivos ilimitados, siempre gratis.</span>
+            <span data-i18n="it" class="active">Nome, targa, data di immatricolazione, alimentazione e chilometri: bastano pochi dati per iniziare. Il primo veicolo è gratuito.</span>
+        <span data-i18n="en">Name, plate, registration date, fuel type and mileage: a few details are enough to start. Your first vehicle is free.</span>
           </p>
         </div>
       </div>
@@ -521,14 +518,12 @@
         <div class="step-num">02</div>
         <div>
           <h3>
-            <span data-i18n="it" class="active">Versa quando vuoi</span>
-            <span data-i18n="en">Add money whenever</span>
-            <span data-i18n="es">Aporta cuando quieras</span>
+            <span data-i18n="it" class="active">Imposta scadenze e promemoria</span>
+        <span data-i18n="en">Set deadlines and reminders</span>
           </h3>
           <p>
-            <span data-i18n="it" class="active">Registra ogni versamento, anche piccolo. L'app tiene il conto e mostra quanto manca.</span>
-            <span data-i18n="en">Log every deposit, even small ones. The app keeps track and shows what's left.</span>
-            <span data-i18n="es">Registra cada aportación, incluso pequeña. La app lleva la cuenta y muestra lo que falta.</span>
+            <span data-i18n="it" class="active">Tagliando, gomme, revisione, bollo, assicurazione e tutto ciò che vuoi ricordare: scegli tu cosa tenere d'occhio e ogni quanto.</span>
+        <span data-i18n="en">Service, tyres, inspection, road tax, insurance and anything else you want to remember: you choose what to track and how often.</span>
           </p>
         </div>
       </div>
@@ -536,14 +531,12 @@
         <div class="step-num">03</div>
         <div>
           <h3>
-            <span data-i18n="it" class="active">Rompi il salvadanaio</span>
-            <span data-i18n="en">Break the piggy bank</span>
-            <span data-i18n="es">Rompe la hucha</span>
+            <span data-i18n="it" class="active">Ricevi gli avvisi, senza pensieri</span>
+        <span data-i18n="en">Get reminded, stress-free</span>
           </h3>
           <p>
-            <span data-i18n="it" class="active">Obiettivo raggiunto? Archivialo e concediti quello per cui hai risparmiato.</span>
-            <span data-i18n="en">Goal reached? Archive it and treat yourself to what you saved for.</span>
-            <span data-i18n="es">¿Objetivo alcanzado? Archívalo y date el capricho por el que ahorraste.</span>
+            <span data-i18n="it" class="active">Una notifica ti avvisa prima di ogni scadenza. Registra i chilometri quando vuoi e l'app tiene il conto di quanto manca.</span>
+        <span data-i18n="en">A notification warns you ahead of every deadline. Log your mileage whenever you like and the app keeps track of what's left.</span>
           </p>
         </div>
       </div>
@@ -556,14 +549,12 @@
 <div class="wrap">
   <section class="feature-block">
     <h2>
-      <span data-i18n="it" class="active">Guarda crescere i tuoi risparmi</span>
-      <span data-i18n="en">Watch your savings grow</span>
-      <span data-i18n="es">Mira crecer tus ahorros</span>
+      <span data-i18n="it" class="active">Il tagliando, su misura</span>
+        <span data-i18n="en">Service, your way</span>
     </h2>
     <p>
-      <span data-i18n="it" class="active">Ogni versamento è un pezzo di puzzle che si scopre: un'immagine nascosta che prende forma man mano che ti avvicini al traguardo. Scegli tra cinque stili di avanzamento — anello, barra, semicerchio, liquido animato, segmenti — e quattro modi di leggere l'andamento: a linea, a istogramma, a calendario o a torta, con un indicatore a colpo d'occhio se sei in linea con i tempi.</span>
-      <span data-i18n="en">Every deposit reveals a piece of the puzzle: a hidden image that takes shape as you get closer to your goal. Choose from five progress styles — ring, bar, half-circle, animated liquid, segments — and four ways to read your trend: line, histogram, calendar or pie chart, with an at-a-glance indicator showing whether you're on track.</span>
-      <span data-i18n="es">Cada aportación revela una pieza del puzzle: una imagen oculta que va tomando forma a medida que te acercas a la meta. Elige entre cinco estilos de progreso — anillo, barra, semicírculo, líquido animado, segmentos — y cuatro formas de leer tu evolución: línea, histograma, calendario o tarta, con un indicador a simple vista de si vas al ritmo previsto.</span>
+      <span data-i18n="it" class="active">Scegli se seguire un intervallo fisso a chilometri e mesi, lasciare che sia il tagliando dinamico a stimare la prossima scadenza dai tuoi chilometri reali, o comporre un tagliando personalizzato voce per voce. Ogni visita finisce nello storico.</span>
+        <span data-i18n="en">Follow a fixed interval in miles or months, let dynamic service estimate your next due date from your real mileage, or build a custom service item by item. Every visit goes into the history.</span>
     </p>
   </section>
 </div>
@@ -573,14 +564,12 @@
 <div class="wrap">
   <section class="feature-block">
     <h2>
-      <span data-i18n="it" class="active">Non dimenticare un versamento</span>
-      <span data-i18n="en">Never miss a deposit</span>
-      <span data-i18n="es">No olvides una aportación</span>
+      <span data-i18n="it" class="active">Gomme sotto controllo</span>
+        <span data-i18n="en">Tyres under control</span>
     </h2>
     <p>
-      <span data-i18n="it" class="active">Attiva il promemoria per i tuoi versamenti periodici: una notifica ti avvisa alla scadenza. Se un giorno rispondi con calma — o te ne dimentichi — tutto resta in sospeso negli Arretrati, pronto per essere confermato quando vuoi, senza perdere nulla.</span>
-      <span data-i18n="en">Turn on reminders for your recurring deposits: a notification alerts you at each due date. If you respond later — or forget — nothing is lost: it stays pending in Overdue, ready to confirm whenever you like.</span>
-      <span data-i18n="es">Activa el recordatorio para tus aportaciones periódicas: una notificación te avisa en cada vencimiento. Si respondes con calma — o se te olvida — nada se pierde: queda pendiente en Atrasados, listo para confirmar cuando quieras.</span>
+      <span data-i18n="it" class="active">Misura montata, pressioni consigliate, data di sostituzione e inversioni pianificate: l'app segue l'usura dalla data di montaggio e ti avvisa quando è il momento di invertirle o cambiarle.</span>
+        <span data-i18n="en">Fitted size, recommended pressures, replacement date and planned rotations: the app follows wear from the fitting date and tells you when it's time to rotate or replace them.</span>
     </p>
   </section>
 </div>
@@ -590,14 +579,12 @@
 <div class="wrap">
   <section class="feature-block">
     <h2>
-      <span data-i18n="it" class="active">Un'idea per i più piccoli</span>
-      <span data-i18n="en">An idea for the little ones</span>
-      <span data-i18n="es">Una idea para los más pequeños</span>
+      <span data-i18n="it" class="active">Bollo, revisione, assicurazione</span>
+        <span data-i18n="en">Road tax, inspection, insurance</span>
     </h2>
     <p>
-      <span data-i18n="it" class="active">SalvadApp! è utile anche per insegnare ai bambini il valore del risparmio: ogni volta che mettono una moneta nel salvadanaio vero, registrano lo stesso importo nell'app. Vedere il puzzle completarsi rende tangibile il progresso — e il giorno in cui l'obiettivo è raggiunto, si rompe davvero il salvadanaio.</span>
-      <span data-i18n="en">SalvadApp! is also great for teaching kids the value of saving: every time they drop a coin in the real piggy bank, they log the same amount in the app. Watching the puzzle come together makes progress tangible — and the day the goal is reached, the piggy bank really does get broken.</span>
-      <span data-i18n="es">SalvadApp! también es útil para enseñar a los niños el valor del ahorro: cada vez que meten una moneda en la hucha real, registran el mismo importe en la app. Ver el puzzle completarse hace tangible el progreso — y el día en que se alcanza el objetivo, la hucha se rompe de verdad.</span>
+      <span data-i18n="it" class="active">Le scadenze fiscali e obbligatorie dei tuoi veicoli, per l'Italia (bollo, revisione) e per il Regno Unito (VED, MOT), con lo storico dei pagamenti. Le bombole GPL e metano hanno la loro scheda.</span>
+        <span data-i18n="en">The tax and legal deadlines of your vehicles, for Italy (road tax, inspection) and the United Kingdom (VED, MOT), with a payment history. LPG and methane cylinders have their own page.</span>
     </p>
   </section>
 </div>
@@ -608,39 +595,36 @@
   <section class="feature-block">
     <h2>
       <span data-i18n="it" class="active">Cosa trovi dentro</span>
-      <span data-i18n="en">What's inside</span>
-      <span data-i18n="es">Qué encontrarás</span>
+        <span data-i18n="en">What's inside</span>
     </h2>
     <ul class="feature-list">
       <li>
-        <span data-i18n="it" class="active">Storico completo di ogni obiettivo, con cronologia dei cicli passati e note personali</span>
-        <span data-i18n="en">Full history for every goal, with past cycles and personal notes</span>
-        <span data-i18n="es">Historial completo de cada objetivo, con ciclos pasados y notas personales</span>
+        <span data-i18n="it" class="active">Più veicoli nella stessa app, con foto e colore a tua scelta per riconoscerli a colpo d'occhio</span>
+        <span data-i18n="en">Multiple vehicles in one app, with a photo and colour of your choice to tell them apart at a glance</span>
       </li>
       <li>
-        <span data-i18n="it" class="active">Foto opzionali per riconoscere a colpo d'occhio le tue schede</span>
-        <span data-i18n="en">Optional photos to recognize your goals at a glance</span>
-        <span data-i18n="es">Fotos opcionales para reconocer tus fichas de un vistazo</span>
+        <span data-i18n="it" class="active">Storico del tagliando e delle sostituzioni, con voci personalizzabili</span>
+        <span data-i18n="en">Service and replacement history, with customisable items</span>
       </li>
       <li>
-        <span data-i18n="it" class="active">Occhio privacy: nascondi le cifre con un tocco, utile sui mezzi pubblici</span>
-        <span data-i18n="en">Privacy eye: hide the numbers with a tap, handy on public transport</span>
-        <span data-i18n="es">Ojo de privacidad: oculta las cifras con un toque, útil en el transporte público</span>
+        <span data-i18n="it" class="active">Promemoria liberi, anche ricorrenti, per tutto quello che non ha una scheda dedicata</span>
+        <span data-i18n="en">Free-form reminders, including recurring ones, for everything without a dedicated page</span>
       </li>
       <li>
-        <span data-i18n="it" class="active">Backup automatico locale, con possibilità di ripristino in un tap</span>
+        <span data-i18n="it" class="active">Documenti del veicolo in un'area protetta da impronta, volto o PIN del telefono</span>
+        <span data-i18n="en">Vehicle documents in an area protected by your phone's fingerprint, face or PIN</span>
+      </li>
+      <li>
+        <span data-i18n="it" class="active">Backup automatico locale, con ripristino in un tap</span>
         <span data-i18n="en">Automatic local backup, restore in one tap</span>
-        <span data-i18n="es">Copia de seguridad local automática, con restauración en un toque</span>
       </li>
       <li>
-        <span data-i18n="it" class="active">Cinque colori d'accento e due stili di card, a tua scelta</span>
-        <span data-i18n="en">Five accent colors and two card styles, your choice</span>
-        <span data-i18n="es">Cinco colores de acento y dos estilos de tarjeta, a tu elección</span>
+        <span data-i18n="it" class="active">Tema chiaro e scuro, colori d'accento a scelta</span>
+        <span data-i18n="en">Light and dark theme, accent colours of your choice</span>
       </li>
       <li>
-        <span data-i18n="it" class="active">Disponibile in italiano, inglese e spagnolo</span>
-        <span data-i18n="en">Available in Italian, English and Spanish</span>
-        <span data-i18n="es">Disponible en italiano, inglés y español</span>
+        <span data-i18n="it" class="active">Disponibile in italiano e in inglese</span>
+        <span data-i18n="en">Available in Italian and English</span>
       </li>
     </ul>
   </section>
@@ -652,13 +636,27 @@
   <section class="feature-block">
     <h2>
       <span data-i18n="it" class="active">La tua privacy viene prima</span>
-      <span data-i18n="en">Your privacy comes first</span>
-      <span data-i18n="es">Tu privacidad es lo primero</span>
+        <span data-i18n="en">Your privacy comes first</span>
     </h2>
     <p>
-      <span data-i18n="it" class="active">SalvadApp! funziona interamente offline. Nessun account da creare, nessun dato inviato a server esterni, nessuna pubblicità, nessun tracciamento del tuo comportamento. Anche le notifiche e i promemoria vengono pianificati interamente sul tuo telefono, senza alcuna trasmissione dei tuoi dati. Le uniche segnalazioni tecniche anonime, in caso di crash dell'app, sono disattivate di default: le attivi tu, solo se vuoi aiutarci a migliorare.</span>
-      <span data-i18n="en">SalvadApp! works entirely offline. No account to create, no data sent to external servers, no ads, no tracking of your behavior. Even notifications and reminders are scheduled entirely on your phone, with no transmission of your data. The only anonymous technical crash reports are off by default: you turn them on only if you want to help us improve.</span>
-      <span data-i18n="es">SalvadApp! funciona completamente sin conexión. Sin cuenta que crear, sin datos enviados a servidores externos, sin publicidad, sin seguimiento de tu comportamiento. Incluso las notificaciones y recordatorios se programan enteramente en tu teléfono, sin transmisión alguna de tus datos. Los únicos informes técnicos anónimos, en caso de fallo, están desactivados por defecto: los activas tú, solo si quieres ayudarnos a mejorar.</span>
+      <span data-i18n="it" class="active">AutOK funziona interamente offline. Nessun account da creare, nessun dato inviato a server dello sviluppatore, nessun tracciamento. Se scegli di copiare un backup su un servizio cloud, sei tu a deciderlo.</span>
+        <span data-i18n="en">AutOK works entirely offline. No account to create, no data sent to the developer's servers, no tracking. If you choose to copy a backup to a cloud service, that's your decision.</span>
+    </p>
+  </section>
+</div>
+
+
+<div class="fold-divider"></div>
+
+<div class="wrap">
+  <section class="feature-block">
+    <h2>
+      <span data-i18n="it" class="active">Un veicolo gratis, poi sblocchi</span>
+      <span data-i18n="en">One vehicle free, then unlock</span>
+    </h2>
+    <p>
+      <span data-i18n="it" class="active">Puoi gestire un veicolo gratuitamente. Per aggiungerne altri puoi sbloccare la funzione con un acquisto una tantum, valido per tutti i veicoli successivi. I veicoli che hai già non vengono mai toccati.</span>
+      <span data-i18n="en">You can manage one vehicle for free. To add more you can unlock the feature with a one-time purchase, valid for every vehicle you add afterwards. The vehicles you already have are never touched.</span>
     </p>
   </section>
 </div>
@@ -669,8 +667,7 @@
   <section>
     <h2>
       <span data-i18n="it" class="active">Documenti</span>
-      <span data-i18n="en">Documents</span>
-      <span data-i18n="es">Documentos</span>
+        <span data-i18n="en">Documents</span>
     </h2>
     <div class="doc-grid">
       <a class="doc-card active" data-i18n="it" href="assets/privacy_it.pdf" target="_blank" rel="noopener">
@@ -683,11 +680,6 @@
         <h3>Privacy Policy</h3>
         <span class="dl">↓ Download PDF</span>
       </a>
-      <a class="doc-card" data-i18n="es" href="assets/privacy_es.pdf" target="_blank" rel="noopener">
-        <p class="doc-kicker">PDF</p>
-        <h3>Política de Privacidad</h3>
-        <span class="dl">↓ Descargar PDF</span>
-      </a>
       <a class="doc-card active" data-i18n="it" href="assets/termini_it.pdf" target="_blank" rel="noopener">
         <p class="doc-kicker">PDF</p>
         <h3>Termini e Condizioni</h3>
@@ -697,11 +689,6 @@
         <p class="doc-kicker">PDF</p>
         <h3>Terms &amp; Conditions</h3>
         <span class="dl">↓ Download PDF</span>
-      </a>
-      <a class="doc-card" data-i18n="es" href="assets/termini_es.pdf" target="_blank" rel="noopener">
-        <p class="doc-kicker">PDF</p>
-        <h3>Términos y Condiciones</h3>
-        <span class="dl">↓ Descargar PDF</span>
       </a>
     </div>
   </section>
@@ -713,11 +700,10 @@
   <footer>
     <div class="foot-row">
       <p>
-        <span data-i18n="it" class="active">Sviluppato da AVLAM. Scrivi a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
-        <span data-i18n="en">Developed by AVLAM. Write to <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
-        <span data-i18n="es">Desarrollado por AVLAM. Escribe a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
+        <span data-i18n="it" class="active">Sviluppato da AVLAM App. Scrivi a <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
+        <span data-i18n="en">Developed by AVLAM App. Write to <a href="mailto:sviluppo.app.am@gmail.com">sviluppo.app.am@gmail.com</a></span>
       </p>
-      <p class="foot-mono">© 2026 SalvadApp!</p>
+      <p class="foot-mono">© 2026 AutOK</p>
     </div>
   </footer>
 </div>
@@ -736,7 +722,7 @@
       });
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.setAttribute('lang', lang);
-      try { localStorage.setItem('salvadapp-lang', lang); } catch (e) {}
+      try { localStorage.setItem('autok-lang', lang); } catch (e) {}
     }
 
     buttons.forEach(function (btn) {
@@ -746,12 +732,11 @@
     });
 
     var saved = null;
-    try { saved = localStorage.getItem('salvadapp-lang'); } catch (e) {}
-    if (saved && ['it', 'en', 'es'].indexOf(saved) !== -1) {
+    try { saved = localStorage.getItem('autok-lang'); } catch (e) {}
+    if (saved && ['it', 'en'].indexOf(saved) !== -1) {
       setLang(saved);
     }
   })();
 </script>
-
 </body>
 </html>
